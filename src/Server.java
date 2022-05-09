@@ -2,6 +2,7 @@
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -34,12 +35,11 @@ public class Server {
     
     public void scrivi(String messaggio){
         try {
-            bw = new BufferedWriter(new OutputStream(so.getOutputStream()));
+            bw = new BufferedWriter(new OutputStreamWriter(so.getOutputStream()));
             bw.write(messaggio+"\n");
             bw.flush();
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
